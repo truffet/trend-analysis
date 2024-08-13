@@ -28,8 +28,8 @@ def fetch_ohlcv_data_for_pairs(pairs):
             # Use the second most recent for 4H calculations (the most recent one is unfinished)
             ohlcv_4h = [ohlcv_last_8[1]]
             
-            # Use the oldest 6 of the last 8 for 1D calculations (excluding the most recent 2)
-            ohlcv_24h = ohlcv_last_8[2:8]
+            # Use the 6 periods starting from 2024-08-12 06:00:00 to 2024-08-13 06:00:00 for 1D calculations
+            ohlcv_24h = ohlcv_last_8[2:]
             
             data.append({
                 'pair': pair,
