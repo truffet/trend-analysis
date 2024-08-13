@@ -25,11 +25,11 @@ def fetch_ohlcv_data_for_pairs(pairs):
         time.sleep(1)  # Delay to avoid hitting rate limit
 
         if len(ohlcv_last_8) == 8:
-            # Use the second most recent for 4H calculations (the most recent one is unfinished)
-            ohlcv_4h = [ohlcv_last_8[1]]
+            # Use the most recent completed 4-hour period for 4H calculations
+            ohlcv_4h = [ohlcv_last_8[-2]]
             
-            # Use the 6 periods starting from 2024-08-12 06:00:00 to 2024-08-13 06:00:00 for 1D calculations
-            ohlcv_24h = ohlcv_last_8[2:]
+            # Use the oldest 6 of the last 8 for 1D (24 hours) calculations
+            ohlcv_24h = ohlcv_last_8[:6]
             
             data.append({
                 'pair': pair,

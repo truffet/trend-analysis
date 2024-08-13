@@ -15,7 +15,7 @@ def save_data_to_csv(ohlcv_data, filename='data/ohlcv_data.csv'):
     os.makedirs(os.path.dirname(filename), exist_ok=True)
 
     # Define the header
-    header = ['Pair', '4H Change', '24H Change', 'Ratio', '4H Volume', '24H Volume', '4H Open Time', '4H Close Time', '4H Open', '4H Close', '12H Open Time', '12H Close Time', '12H Open', '12H Close', 'Interpretation']
+    header = ['Pair', '4H Change', '24H Change', 'Ratio', '4H Volume', '24H Volume', '4H Open Time', '4H Close Time', '4H Open', '4H Close', '24H Open Time', '24H Close Time', '24H Open', '24H Close', 'Interpretation']
 
     # Write the data to a CSV file
     with open(filename, mode='w', newline='') as file:
@@ -34,10 +34,10 @@ def save_data_to_csv(ohlcv_data, filename='data/ohlcv_data.csv'):
                 entry['close_4h_time'],
                 clean_data(entry['open_4h']),
                 clean_data(entry['close_4h']),
-                entry['open_12h_time'],
-                entry['close_12h_time'],
-                clean_data(entry['open_12h']),
-                clean_data(entry['close_12h']),
+                entry['open_24h_time'],
+                entry['close_24h_time'],
+                clean_data(entry['open_24h']),
+                clean_data(entry['close_24h']),
                 entry.get('interpretation', '')
             ]
             writer.writerow(row)
