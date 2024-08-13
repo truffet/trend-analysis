@@ -16,8 +16,9 @@ def main():
     print(usdt_pairs[:10])  # Print the first 10 pairs to verify
 
     # Step 2: Fetch OHLCV data
-    ohlcv_data = fetch_ohlcv_data_for_pairs(usdt_pairs[:5])  # Limit to 5 pairs for quick inspection
-
+    #ohlcv_data = fetch_ohlcv_data_for_pairs(usdt_pairs[:5])  # Limit to 5 pairs for quick inspection
+    ohlcv_data = fetch_ohlcv_data_for_pairs(usdt_pairs) # full search
+    
     # Step 3: Calculate changes and extract additional fields
     processed_data = process_ohlcv_data(ohlcv_data)
 
