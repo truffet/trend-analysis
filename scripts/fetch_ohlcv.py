@@ -20,20 +20,16 @@ def fetch_ohlcv_data_for_pairs(pairs):
     for pair in pairs:
         print(f"Fetching data for {pair}...")
         
-        # Fetch the last 3 completed 4-hour periods (we'll use the oldest of the last 2 for 4H)
-        ohlcv_last_3 = get_ohlcv(pair, '4h', limit=3)
-        time.sleep(1)  # Delay to avoid hitting rate limit
-        
-        # Fetch the last 8 completed 4-hour periods (we'll use the oldest 6 of the last 8 for 1D)
+        # Fetch the last 8 completed 4-hour periods
         ohlcv_last_8 = get_ohlcv(pair, '4h', limit=8)
         time.sleep(1)  # Delay to avoid hitting rate limit
 
-        if len(ohlcv_last_3) == 3 and len(ohlcv_last_8) == 8:
-            # Use the oldest of the last 3 for 4H calculations (excluding the most recent one)
-            ohlcv_4h = [ohlcv_last_3[1]]
+        if len(ohlcv_last_8) == 8:
+            # Use the second most recent for 4H calculations (the most recent one is unfinished)
+            ohlcv_4h = [ohlcv_last_8[1]]
             
             # Use the oldest 6 of the last 8 for 1D calculations (excluding the most recent 2)
-            ohlcv_24h = ohlcv_last_8[:6]
+            ohlcv_24h = ohlcv_last_8[2:8]
             
             data.append({
                 'pair': pair,

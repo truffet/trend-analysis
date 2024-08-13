@@ -1,6 +1,5 @@
 import csv
 import os
-import math
 
 def clean_data(value):
     if isinstance(value, float):
