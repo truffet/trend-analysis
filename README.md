@@ -5,13 +5,8 @@ This project fetches cryptocurrency trading data, calculates 4-hour and 1-day pe
 
 ## Setup
 
-1. Clone the repository:
-    ```sh
-    git clone <repository_url>
-    cd 4h_1d_trend_analysis
-    ```
+Install dependencies:
 
-2. Install dependencies:
     ```sh
     pip install -r requirements.txt
     ```
@@ -19,8 +14,9 @@ This project fetches cryptocurrency trading data, calculates 4-hour and 1-day pe
 ## Running the Project
 
 Execute the main script to fetch data, calculate changes, and store results:
+
     ```sh
-    python main.py
+    python3 main.py
     ```
 
 ## License
